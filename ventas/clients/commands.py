@@ -36,7 +36,9 @@ def create(ctx, name, company, email, position):
     """Creates a new client"""
     client = Client(name, company, email, position)
     client_service = ClientService(ctx.obj['clients_table'])
-    
+ #  CLASE 41:
+ #  Se crea el cliente y el servicio y finalmente
+ #  Se usa la función create_client 
     client_service.create_client(client)
     
 
