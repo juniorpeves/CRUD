@@ -27,19 +27,20 @@ class ClientService:
             return list(reader)
     # CLASE 43
     # Metodo que actualiza un cliente, recibe a un cliente actualizado
-    def update_client(self, update_client):
+    
+    def update_client(self, updated_client):
         # Obtener la lista de clientes      
         clients = self.list_clients()
         # Crear la lista vacia
-        update_clients = []
+        updated_clients = []
         for client in clients:
             # Si el cliente tiene el mismo id se actualiza y se añada el cliente_update
-            if client['uid'] == update_client.uid:
-                update_clients.append(update_client.to_dict())
+            if client['uid'] == updated_client.uid:
+                updated_clients.append(updated_client.to_dict())
             else:
-                update_clients.append(clients)
+                updated_clients.append(clients)
         # Metodo privado para guardar en disco
-        self._save_to_disk(update_clients)
+        self._save_to_disk(updated_clients)
     
     # CLASE 43
     def _save_to_disk(self, clients):
