@@ -90,8 +90,7 @@ def update(ctx, client_uid):
 
 
 def _update_client_flow(client):
-    click.echo ('Leave empty if you dont want to modify the value')
-    client.uid = client.uid
+    click.echo ('Leave empty if you dont want to modify the value')    
     client.name = click.prompt('New name', type=str, default=client.name)
     client.company = click.prompt('New company', type=str, default=client.company)
     client.email = click.prompt('New email', type=str, default=client.email)
