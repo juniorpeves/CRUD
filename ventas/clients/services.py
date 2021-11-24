@@ -38,7 +38,7 @@ class ClientService:
             if client['uid'] == updated_client.uid:
                 updated_clients.append(updated_client.to_dict())
             else:
-                updated_clients.append(clients)
+                updated_clients.append(client)
         # Metodo privado para guardar en disco
         self._save_to_disk(updated_clients)
     
