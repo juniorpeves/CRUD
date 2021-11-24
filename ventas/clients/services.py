@@ -45,9 +45,9 @@ class ClientService:
     # CLASE 43
     def _save_to_disk(self, clients):
         tmp_table_name = self.table_name + '.tmp'
-        with open(tmp_table_name) as f:
+        with open(tmp_table_name, mode='w') as f:
             writer = csv.DictWriter(f, fieldnames=Client.schema())
-            writer.writerow(clients)
+            writer.writerows(clients)
         # Renombra y eliminar con em modulo os
         os.remove(self.table_name)    
         os.rename(tmp_table_name, self.table_name)

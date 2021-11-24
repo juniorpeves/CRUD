@@ -65,9 +65,7 @@ def list(ctx):
 
 
 @clients.command() #Con esto ya es comando de clients 
-#   CLASE44
-@click.argument('client_uid',
-                type=str)
+@click.argument('client_uid', type=str)
 @click.pass_context #Pasar el contexto
 def update(ctx, client_uid):
     """Update a client"""
@@ -96,6 +94,7 @@ def _update_client_flow(client):
     client.email = click.prompt('New email', type=str, default=client.email)
     client.position = click.prompt('New position', type=str, default=client.position)
 
+    return client
     
 @clients.command() #Con esto ya es comando de clients 
 @click.pass_context #Pasar el contexto  
