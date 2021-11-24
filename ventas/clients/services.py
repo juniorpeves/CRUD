@@ -1,4 +1,5 @@
 import csv
+import os #CLASE 43
 #Directiva de importación para  usar la función sin llamar el modulo
 from clients.models import Client
 
@@ -24,3 +25,29 @@ class ClientService:
             reader = csv.DictReader(f, fieldnames=Client.schema())
             # Devuelve en lista las lecturas
             return list(reader)
+    # CLASE 43
+    # Metodo que actualiza un cliente, recibe a un cliente actualizado
+    def update(self, update_client):
+        # Obtener la lista de clientes      
+        clients = self.list_clients()
+        # Crear la lista vacia
+        update_clients = []
+        for client in clients:
+            # Si el cliente tiene el mismo id se actualiza y se añada el cliente_update
+            if client['uid'] == update_client.uid:
+                update_clients.append(update_client.to_dict())
+            else:
+                update_clients.append(clients)
+        # Metodo privado para guardar en disco
+        self._save_to_disk(update_clients)
+    
+    # CLASE 43
+    def _save_to_disk(self, clients):
+        tmp_table_name = self.table_name + '.tmp'
+        with open(tmp_table_name) as f:
+            writer = csv.DictWriter(f, fieldnames=Client.schema())
+            writer.writerow(clients)
+        # Renombra y eliminar con em modulo os
+        os.remove(self.table_name)    
+        os.rename(tmp_table_name, self.table_name)
+        
