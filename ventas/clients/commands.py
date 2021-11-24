@@ -34,11 +34,11 @@ def clients():
 @click.pass_context #Pasar el contexto
 def create(ctx, name, company, email, position):
     """Creates a new client"""
+    #  CLASE 41:
+    #  Se crea el cliente y el servicio y finalmente
     client = Client(name, company, email, position)
     client_service = ClientService(ctx.obj['clients_table'])
- #  CLASE 41:
- #  Se crea el cliente y el servicio y finalmente
- #  Se usa la función create_client 
+    #  Se usa la función create_client del archivo service.py
     client_service.create_client(client)
     
 
@@ -46,7 +46,22 @@ def create(ctx, name, company, email, position):
 @click.pass_context #Pasar el contexto
 def list(ctx):
     """List all clients"""
-    pass
+    #  CLASE 42:
+    #  Referencia al ClientService, inicializando la clase
+    client_service = ClientService(ctx.obj['clients_table'])
+    #  Se usa la función create_client del archivo service.py
+    clients_list = client_service.list_clients()
+    # Usamos click.echo (Consola) a cambio de print
+    click.echo ('ID  |  NAME  |  COMPANY  |  EMAIL  |  POSITION')
+    click.echo ('*'*100)
+    #   Iteración para los clientes
+    for client in clients_list:
+        click.echo('{uid}  |  {name} | {company}   | {email} | {position}'.format(
+            uid=client['uid'],
+            name=client['name'],
+            company=client['company'],
+            email =client['email'],
+            position =client['position']))
 
 
 @clients.command() #Con esto ya es comando de clients 
