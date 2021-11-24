@@ -81,8 +81,8 @@ def update(ctx, client_uid):
     # Condicional para hacer actualización
     if client:
         # Envia a un nuevo metodo _update_client_flow
-        client = _update_client_flow(Client(**client[0]))
         #  Se usa la función update del archivo service.py
+        client = _update_client_flow(Client(**client[0]))
         client_service.update_client(client)
         click.echo ('Client update')        
     else:
