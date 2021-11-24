@@ -79,7 +79,7 @@ def update(ctx, client_uid):
     # Condicional para hacer actualización
     if client:
         # Envia a un nuevo metodo _update_client_flow
-        #  Se usa la función update del archivo service.py
+        #  Se usa la función update_client del archivo service.py
         client = _update_client_flow(Client(**client[0]))
         client_service.update_client(client)
         click.echo ('Client update')        
@@ -93,7 +93,7 @@ def _update_client_flow(client):
     client.company = click.prompt('New company', type=str, default=client.company)
     client.email = click.prompt('New email', type=str, default=client.email)
     client.position = click.prompt('New position', type=str, default=client.position)
-
+    #Retornar cliente actualizado
     return client
     
 @clients.command() #Con esto ya es comando de clients 
