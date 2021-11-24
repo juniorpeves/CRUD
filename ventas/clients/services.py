@@ -27,7 +27,7 @@ class ClientService:
             return list(reader)
     # CLASE 43
     # Metodo que actualiza un cliente, recibe a un cliente actualizado
-    def update(self, update_client):
+    def update_client(self, update_client):
         # Obtener la lista de clientes      
         clients = self.list_clients()
         # Crear la lista vacia
