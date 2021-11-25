@@ -4,7 +4,7 @@ list = [{'name': 'Junior', 'company': 'BITEL', 'email': 'juniorpeves@gmail.com',
 borrar=[list[0]]
 list.remove(borrar[0])
 print(list)
-"""
+
 def divide(denominator):
         if denominator == 0:
                 raise ZeroDivisionError("No se puede dividir entre 0")
@@ -13,4 +13,9 @@ def divide(denominator):
                 
 if __name__ == '__main__':
         divide(0)
-
+"""
+x = 'hello,' 
+x += 'world!'
+print(x)
+PI = 3.14159
+print(5//2)
